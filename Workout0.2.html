@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Random Workout Generator</h1>
+
+<img id="myImage" onclick="changeImage()" src="http://www.handdrawnapps.com/wp-content/uploads/2013/02/Button-Go-blue.png" width="200" height="200">
+
+<p id="CountDown">asdf</p>
+
+<script>
+var timeS = 3;
+var timeMS = timeS * 1000;
+var text = "Ready! Set!";
+var timeLeft = timeS;
+var jumpingJacks = 
+    "http://www.improvefitness.net/wp-content/uploads/2014/01/jumping-jacks-muscles.jpg"
+var sitUps =
+    "http://workoutlabs.com/wp-content/uploads/watermarked/Sit-ups.png"
+var pushUps =
+    "http://workoutlabs.com/wp-content/uploads/watermarked/Pushup.png"
+var nextButton =
+    "http://www.handdrawnapps.com/wp-content/uploads/2013/02/Button-Next-gold.png"
+var workOut = [jumpingJacks, sitUps, pushUps]; 
+
+ function changeImage() {
+   var image = document.getElementById('myImage');
+   if (image.src.match("bulbon")) {
+        image.src = "pic_bulboff.gif";
+    } 
+   else {
+        image.src = workOut[Math.floor(3*Math.random())];
+        setTimeout(TurnLightOff, timeMS )
+        var timeLeft = timeS;
+        setInterval(showthetime, 1000)
+    }
+
+   function TurnLightOff(){
+     var d = new Date();
+     image.src = nextButton;}
+     
+   function showthetime(){
+     var d = new Date();
+     document.getElementById("CountDown").innerHTML = timeLeft;
+     if(timeLeft >0){timeLeft = timeLeft - 1;}
+
+
+}
+
+ }
+</script>
+
+</body>
+</html>

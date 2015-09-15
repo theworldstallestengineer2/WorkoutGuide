@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Random Workout Generator</h1>
+
+<img id="myImage" onclick="changeImage()" src="http://www.handdrawnapps.com/wp-content/uploads/2013/02/Button-Go-blue.png" width="200" height="200">
+<h2>Time Left:</h2>
+<h2 id="CountDown">Ready! Set!</h2>
+
+<script>
+//Time Values
+var timeS = 60;
+var timeMS = timeS * 1000;
+var timeLeft = 80085;
+
+//Load images from web.
+var jumpingJacks = 
+    "http://www.improvefitness.net/wp-content/uploads/2014/01/jumping-jacks-muscles.jpg"
+var sitUps =
+    "http://workoutlabs.com/wp-content/uploads/watermarked/Sit-ups.png"
+var pushUps =
+    "http://workoutlabs.com/wp-content/uploads/watermarked/Pushup.png"
+var nextButton =
+    "http://www.handdrawnapps.com/wp-content/uploads/2013/02/Button-Next-gold.png"
+var workOut = [jumpingJacks, sitUps, pushUps]; 
+
+ setInterval(upDateTime, 250)
+ function upDateTime(){
+   if(timeLeft > 0){timeLeft = timeLeft - .25;}
+   document.getElementById("CountDown").innerHTML = Math.ceil(timeLeft);   }
+
+
+ function changeImage() {
+   var image = document.getElementById('myImage');
+   image.src = workOut[Math.floor(3*Math.random())];
+   setTimeout(goToNextButton, timeMS )
+   timeLeft = timeS; 
+
+   function goToNextButton(){
+     image.src = nextButton;}
+     
+   
+ }
+
+</script>
+
+</body>
+</html>
